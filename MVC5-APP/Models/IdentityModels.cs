@@ -24,6 +24,7 @@ namespace MVC5_APP.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+        public DbSet<Movie> Movie { get; set; }
 
         public static ApplicationDbContext Create()
         {
