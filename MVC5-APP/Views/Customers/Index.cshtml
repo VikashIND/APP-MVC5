@@ -1,0 +1,28 @@
+﻿@model IEnumerable< MVC5_APP.Models.Customer>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<table>
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Name
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+        <tr>
+            <td>@customer.Id</td>
+            <td>@Html.ActionLink(customer.Name,"Details","Customers")</td>
+        </tr>
+        }
+    </tbody>
+</table>
+

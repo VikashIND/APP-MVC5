@@ -1,0 +1,38 @@
+﻿@model MVC5_APP.ViewModels.CustomerViewModel
+
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>New</h2>
+
+@using (Html.BeginForm("Create","Customers")) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>CustomerViewModel</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Customer.Name)
+        @Html.TextBoxFor(model => model.Customer.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.Customer.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Customer.MembershipTypeId)
+        @Html.DropDownListFor(model => model.Customer.MembershipTypeId, new SelectList(Model.membershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Customer.MembershipTypeId)
+
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
